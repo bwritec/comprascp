@@ -84,7 +84,12 @@ phpunit
 #-------------------------
 # Composer
 #-------------------------
-vendor/
+#
+# Para evitar futuras incompatibilidades ao baixar
+# esse software, a pasta composer sobe com o
+# projeto.
+#
+# vendor/
 
 #-------------------------
 # IDE / Development Files
