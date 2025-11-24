@@ -59,30 +59,21 @@
     /**
      * /dashboard/categories
      */
-    $routes->group('dashboard/categories', function($routes)
-    {
-        $routes->get('/', 'CategoryController::index');
-        $routes->get('create', 'CategoryController::create');
-        $routes->post('store', 'CategoryController::store');
-        $routes->get('edit/(:num)', 'CategoryController::edit/$1');
-        $routes->post('update/(:num)', 'CategoryController::update/$1');
-        $routes->get('delete/(:num)', 'CategoryController::delete/$1');
-    });
+    $routes->get('/dashboard/categories', 'CategoryController::index');
+    $routes->get('/dashboard/categories/create', 'CategoryController::create');
+    $routes->post('/dashboard/categories/store', 'CategoryController::store');
+    $routes->get('/dashboard/categories/edit/(:num)', 'CategoryController::edit/$1');
+    $routes->post('/dashboard/categories/update/(:num)', 'CategoryController::update/$1');
+    $routes->get('/dashboard/categories/delete/(:num)', 'CategoryController::delete/$1');
 
     /**
-     * dashboard
+     * /dashboard/sell
      */
-    $routes->group('dashboard', ['filter' => 'auth'], static function ($routes)
-    {
-        /**
-         * dashboard/sell
-         */
-        $routes->get('sell', 'SellController::index');
-        $routes->post('sell/store', 'SellController::store');
+    $routes->get('/dashboard/sell', 'SellController::index', ['filter' => 'auth']);
+    $routes->post('/dashboard/sell/store', 'SellController::store', ['filter' => 'auth']);
 
-        /**
-         * dashboard/products
-         */
-        $routes->get('products', 'ProductsController::index');
-        $routes->get('products/delete/(:num)', 'ProductsController::delete/$1');
-    });
+    /**
+     * /dashboard/products
+     */
+    $routes->get('/dashboard/products', 'ProductsController::index', ['filter' => 'auth']);
+    $routes->get('/dashboard/products/delete/(:num)', 'ProductsController::delete/$1', ['filter' => 'auth']);
