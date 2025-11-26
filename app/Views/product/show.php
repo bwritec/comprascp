@@ -3,6 +3,14 @@
 <?= $this->section('content') ?>
 <div class="container mb-3 mt-4">
     <div class="row">
+        <?php if ($product['demonstration']): ?>
+            <div class="col-12 mb-3">
+                <div class="alert alert-warning">
+                    Esse é um produto de demonstração
+                </div>
+            </div>
+        <?php endif ?>
+
         <!-- Coluna de imagens -->
         <div class="col-md-6">
             <div id="productCarousel" class="carousel slide shadow-sm mb-3" data-bs-ride="carousel">
@@ -62,7 +70,7 @@
         <!-- Coluna de informações -->
         <div class="col-md-6">
             <small>
-                ID: <?= esc($product['id']) ?> | <strong>Condição: </strong><?= esc($product['conditions']) ?>
+                ID: <?= esc($product['id']) ?> | <strong>Condição: </strong><?= esc($product['conditions']) ?> | <?= esc($product['amount']) ?> Disponível
             </small>
             <h3><?= esc($product['name']) ?></h3>
 
@@ -72,7 +80,7 @@
                 </p>
             <?php endif; ?>
 
-            <h4 class="text-success mb-3">R$ <?= number_format($product['price'], 2, ',', '.') ?></h4>
+            <h4 class="text-success mb-3">R$ <?= number_format($product['price_final'], 2, ',', '.') ?></h4>
 
             <form action="<?= site_url('favorite') ?>/<?= esc($product["id"]) ?>" method="post">
                 <?= csrf_field() ?>
@@ -82,9 +90,15 @@
                 </button>
             </form>
 
-            <button class="btn btn-dark btn-lg mb-3">
-                Comprar Agora
-            </button>
+            <?php if ($product['demonstration']): ?>
+                <button class="btn btn-dark disabled btn-lg mb-3">
+                    Comprar Agora
+                </button>
+            <?php else: ?>
+                <button class="btn btn-dark btn-lg mb-3">
+                    Comprar Agora
+                </button>
+            <?php endif; ?>
         </div>
     </div>
 </div>

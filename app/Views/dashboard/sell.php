@@ -119,6 +119,30 @@
                         </div>
                     </div>
 
+                    <?php if (session()->has('user') && session('user.admin') === '1'): ?>
+                        <div class="mb-3">
+                            <label>
+                                Produto de demonstração
+                            </label>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="demonstration" id="demonstrationFalse" value="Não" checked>
+
+                                <label class="form-check-label" for="demonstrationFalse">
+                                    Não
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="demonstration" id="demonstrationTrue" value="Sim">
+
+                                <label class="form-check-label" for="demonstrationTrue">
+                                    Sim
+                                </label>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
                     <div class="mb-3">
                         <label>
                             Descrição

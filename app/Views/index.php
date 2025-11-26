@@ -23,7 +23,7 @@
                                     </span>
 
                                     <p class="fw-bold" style="color: #333;">
-                                        R$ <?= number_format($p['price'], 2, ',', '.') ?>
+                                        R$ <?= number_format($p['price_final'], 2, ',', '.') ?>
                                     </p>
                                 </a>
                             </div>

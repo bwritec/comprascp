@@ -37,6 +37,7 @@ class SellController extends BaseController
         $validation->setRules([
             'name'            => 'required|min_length[3]',
             'conditions'      => 'required',
+            'demonstration'   => 'required',
             'description'     => 'required',
             'amount'          => 'required|integer',
             'price'           => 'required|decimal',
@@ -153,11 +154,32 @@ class SellController extends BaseController
          */
         $price_final = $price + ($price * ($taxa / 100));
 
+        /**
+         * Verifica sé produto é de demonstração ou não.
+         */
+        $demonstration = $this->request->getPost('demonstration');
+        if (session('user.admin') === '1')
+        {
+            if ($demonstration == "Sim")
+            {
+                $demonstration = true;
+            }
+
+            if ($demonstration == "Não")
+            {
+                $demonstration = false;
+            }
+        } else
+        {
+            $demonstration = false;
+        }
+
         $productModel = new ProductModel();
         $productId = $productModel->insert([
             'user_id' => $userId,
             'name' => $this->request->getPost('name'),
             'conditions' => $this->request->getPost('conditions'),
+            'demonstration' => $demonstration,
             'description' => $this->request->getPost('description'),
             'amount' => $this->request->getPost('amount'),
             'price' => $price,
