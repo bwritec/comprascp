@@ -28,6 +28,14 @@ class LoginController extends BaseController
      */
     public function auth()
     {
+        /**
+         * Se já estiver logado, redireciona
+         */
+        if (session()->get('user'))
+        {
+            return redirect()->to('/dashboard');
+        }
+
         helper(['form']);
         $session    = session();
         $validation = \Config\Services::validation();
