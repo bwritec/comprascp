@@ -27,7 +27,604 @@
      -->
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>dist/css/bootstrap-5.3.7.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>dist/css/fontawesome-7.0.0.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>dist/css/style.css">
+
+    <!--
+      - Scripts.
+     -->
+    <script type="text/javascript" src="<?= base_url() ?>dist/js/bootstrap.bundle-5.3.7.js"></script>
+    <script type="text/javascript" src="<?= base_url() ?>dist/js/jquery-3.7.1.js"></script>
+
+    <!--
+      - Estilos
+     -->
+    <style>
+        /**
+         * Cards.
+         */
+        .card-header
+        {
+            padding: 15px 30px;
+        }
+
+        .card-body
+        {
+            padding: 30px;
+        }
+
+        .card-footer
+        {
+            padding-right: 30px;
+            padding-left: 30px;
+        }
+
+        /**
+         * Todos os componentes da navbar.
+         */
+        .navbar-mobile
+        {
+            border-bottom: 1px solid #BBBBBB;
+            background-color: #FFE600;
+            display: block;
+        }
+
+        @media (min-width: 768px)
+        {
+            .navbar-mobile
+            {
+                display: none;
+            }
+        }
+
+        .navbar-mobile .btn
+        {
+            margin-top: 4px;
+        }
+
+        .navbar-mobile .navbar-logo
+        {
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar
+        {
+            border-bottom: 1px solid #BBBBBB;
+            background-color: #FFE600;
+            display: none;
+        }
+
+        @media (min-width: 768px)
+        {
+            .navbar
+            {
+                display: block;
+            }
+        }
+
+        .navbar .row
+        {
+            padding: 5px 0;
+            width: 100%;
+        }
+
+        .navbar-logo
+        {
+            margin-bottom: 5px;
+        }
+
+        .navbar-logo img
+        {
+            display: block;
+            float: left;
+            width: 40px;
+        }
+
+        .navbar-logo .text
+        {
+            text-decoration: none;
+            padding: 0 0 0 8px;
+            font-weight: bold;
+            line-height: 40px;
+            font-size: 14px;
+            display: block;
+            height: 40px;
+            float: left;
+        }
+
+        .navbar-search input
+        {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            width: calc(100% - 40px);
+            height: 40px;
+            float: left;
+            border: 0;
+        }
+
+        .navbar-search input:focus
+        {
+            box-shadow: unset;
+        }
+
+        .navbar-search button,
+        .navbar-search button:hover
+        {
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+            background-color: #FFFFFF;
+            color: #000000;
+            height: 40px;
+            width: 40px;
+        }
+
+        .navbar .categories
+        {
+            margin-right: 8px;
+            max-width: 120px;
+            float: left;
+        }
+
+        .navbar .actions
+        {
+            float: right;
+            height: 38px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar .actions .list
+        {
+            padding-left: 15px;
+            line-height: 38px;
+            display: block;
+            float: left;
+        }
+
+        .navbar .actions .list a
+        {
+            text-decoration: none;
+            color: #000000;
+        }
+
+        .navbar .actions .list a:hover
+        {
+            text-decoration: underline;
+        }
+
+        .navbar .cards
+        {
+            text-align: center;
+            line-height: 38px;
+            max-width: 62px;
+            color: #000000;
+            float: right;
+            height: 38px;
+            width: 38px;
+        }
+
+        .informar-cep .btn
+        {
+            padding: 0;
+        }
+
+        .informar-cep .box
+        {
+            height: 38px;
+            width: 100%;
+        }
+
+        .informar-cep .icon
+        {
+            text-align: center;
+            line-height: 38px;
+            font-size: 22px;
+            height: 38px;
+            width: 38px;
+            color: #000;
+            float: left;
+        }
+
+        .informar-cep .message
+        {
+            width: calc(100% - 38px);
+            text-align: left;
+            color: #000000;
+            height: 38px;
+            float: left;
+        }
+
+        .informar-cep .message span
+        {
+            width: 100%;
+            float: left;
+        }
+
+        .informar-cep .message .text
+        {
+            font-size: 12px;
+        }
+
+        .informar-cep .message .word
+        {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .informar-cep-box
+        {
+            background-color: rgba(0, 0, 0, 0.2);
+            position: absolute;
+            height: 100vh;
+            display: none;
+            z-index: 1000;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        .informar-cep-box .card
+        {
+            width: calc(100% - 30px);
+            margin: 15px auto;
+            max-width: 600px;
+        }
+
+        .informar-cep-box .card-body form
+        {
+            margin-bottom: 8px;
+        }
+
+        .informar-cep-box .card-body label
+        {
+            width: 100%;
+            float: left;
+        }
+
+        .informar-cep-box .card-body input
+        {
+            width: calc(100% - 84px);
+            margin-right: 8px;
+            float: left;
+        }
+
+        .informar-cep-box .card-body button
+        {
+            width: 76px;
+            float: left;
+        }
+
+        /**
+         * Componentes da sidebar.
+         */
+        .sidebar-mobile
+        {
+            background-color: rgba(0, 0, 0, 0.8);
+            position: absolute;
+            height: 100vh;
+            display: none;
+            z-index: 999;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        @media (min-width: 768px)
+        {
+            .sidebar-mobile
+            {
+                display: none !important;
+            }
+        }
+
+        .sidebar-mobile .box
+        {
+            border-right: 1px solid #BBB;
+            background-color: #F9F9F9;
+            max-width: 270px;
+            overflow: auto;
+            height: 100vh;
+            width: 100%;
+            float: left;
+        }
+
+        .sidebar-mobile .close
+        {
+            float: right;
+        }
+
+        .sidebar-mobile .close .btn
+        {
+            background-color: rgba(255, 255, 255, 0.8);
+            margin: 4px 4px 0 0;
+        }
+
+        .sidebar-mobile .sidebar-logo
+        {
+            margin-bottom: 7px;
+            padding: 8px;
+            width: 100%;
+            float: left;
+        }
+
+        .sidebar-mobile .sidebar-logo img
+        {
+            display: block;
+            float: left;
+            width: 40px;
+        }
+
+        .sidebar-mobile .sidebar-logo .text
+        {
+            text-decoration: none;
+            padding: 0 0 0 8px;
+            font-weight: bold;
+            line-height: 40px;
+            font-size: 14px;
+            display: block;
+            height: 40px;
+            float: left;
+        }
+
+        .sidebar-mobile .informar-cep
+        {
+            height: 40px;
+            width: 100%;
+            float: left;
+        }
+
+        .sidebar-mobile .informar-cep .box
+        {
+            border: unset;
+            height: 40px;
+            width: 100%;
+        }
+
+        .sidebar-mobile .cats
+        {
+            padding: 15px 8px;
+            width: 100%;
+            float: left;
+        }
+
+        .sidebar-mobile .menu
+        {
+            width: 100%;
+            float: left;
+        }
+
+        .sidebar-mobile .menu .actions
+        {
+            margin-bottom: 15px;
+            padding: 0;
+        }
+
+        .sidebar-mobile .menu .actions .list
+        {
+            line-height: 34px;
+            padding: 0 8px;
+            height: 34px;
+            width: 100%;
+        }
+
+        .sidebar-mobile .menu .actions .list a
+        {
+            text-decoration: none;
+            color: #000000;
+        }
+
+        .search-mobile
+        {
+            background-color: #FFFFFF;
+            position: absolute;
+            display: none;
+            height: 100vh;
+            z-index: 999;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        @media (min-width: 768px)
+        {
+            .sidebar-mobile
+            {
+                display: none !important;
+            }
+        }
+
+        .search-mobile .close
+        {
+            float: right;
+            margin: 15px;
+        }
+
+        .search-mobile .card
+        {
+            margin: 15px;
+        }
+
+        .search-mobile .card .card-body
+        {
+            padding: 0;
+        }
+
+        .search-mobile .search input
+        {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            width: calc(100% - 40px);
+            height: 40px;
+            float: left;
+            border: 0;
+        }
+
+        .search-mobile .search input:focus
+        {
+            box-shadow: unset;
+        }
+
+        .search-mobile .search button,
+        .search-mobile .search button:hover
+        {
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+            background-color: #FFFFFF;
+            color: #000000;
+            height: 40px;
+            width: 40px;
+        }
+
+        /**
+         * Estilos da newsletter.
+         */
+        .newsletter
+        {
+            text-align: center;
+            margin-top: 15px;
+            width: 100%;
+            float: left;
+        }
+
+        .newsletter .card
+        {
+            background-color: #FFE600;
+            border-left-width: 5px;
+            border-color: #FFE600;
+        }
+
+        .newsletter form
+        {
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        @media (min-width: 768px)
+        {
+            .newsletter form
+            {
+                width: 60%;
+            }
+        }
+
+        .newsletter .form-control
+        {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            width: calc(100% - 100px);
+            border-color: #FFFFFF;
+            float: left;
+        }
+
+        .newsletter .btn
+        {
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+            float: left;
+        }
+
+        /**
+         * Estilos do conteúdo.
+         */
+        .content
+        {
+            margin: 15px 0;
+            width: 100%;
+            float: left;
+        }
+
+        /**
+         * Estilos da home sidebar.
+         */
+        .home-sidebar ul
+        {
+            margin-bottom: 8px;
+        }
+
+        .home-sidebar a
+        {
+            text-decoration: none;
+            color: #000000;
+        }
+
+        .home-sidebar .active
+        {
+            background-color: #FFE600;
+            border-color: #dee2e6;
+        }
+
+        .home-sidebar a:hover
+        {
+            text-decoration: underline;
+        }
+
+        /**
+         * Toggle Password
+         */
+        .password-toggle
+        {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            width: calc(100% - 38px);
+            float: left;
+        }
+
+        .password-toggle-btn
+        {
+            background-color: var(--bs-border-color);
+            border-bottom-right-radius: 4px;
+            border-top-right-radius: 4px;
+            color: var(--bs-body-color);
+            text-align: center;
+            line-height: 38px;
+            cursor: pointer;
+            display: block;
+            height: 38px;
+            width: 38px;
+            float: left;
+        }
+
+        .password-toggle-btn.hide
+        {
+            display: none;
+        }
+
+        .footer
+        {
+            border-top: 1px solid #ccc;
+            background-color: #FFFFFF;
+            position: relative;
+            line-height: 45px;
+            height: 45px;
+            float: left;
+            width: 100%;
+        }
+
+        .footer p
+        {
+            margin-bottom: 0;
+        }
+
+        .fixed-bottom
+        {
+            transition: all 0.3s ease;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        /**
+         * Exibir submenu lateralmente no hover.
+         */
+        .dropdown-submenu:hover > .dropdown-menu
+        {
+            position: absolute;
+            display: block;
+            margin-top: 0;
+            left: 100%;
+            top: 0;
+        }
+    </style>
 
 </head>
 <body class="clearfix">
@@ -380,18 +977,105 @@
         </div>
     </footer>
 
-    <!--
-      - Scripts.
-     -->
-    <script type="text/javascript" src="<?= base_url() ?>dist/js/bootstrap.bundle-5.3.7.js"></script>
-    <script type="text/javascript" src="<?= base_url() ?>dist/js/jquery-3.7.1.js"></script>
-    <script type="text/javascript" src="<?= base_url() ?>dist/js/footer-fix.js"></script>
+    
     <script type="text/javascript" src="<?= base_url() ?>dist/js/script.js"></script>
 
     <!--
       - Outros scripts.
      -->
     <script type="text/javascript">
+        (function($)
+        {
+            $.fn.smartFooter = function(options)
+            {
+                var settings = $.extend({
+                    mainSelector: 'main',  // seletor do conteúdo principal
+                    offset: 0              // margem opcional inferior
+                }, options);
+
+                var $footer = this;
+                var $main = $(settings.mainSelector);
+
+                function adjustFooter()
+                {
+                    // Altura total da página
+                    var docHeight = $(window).height();
+                    var contentHeight = $('body').outerHeight(true);
+
+                    if (contentHeight + settings.offset < docHeight)
+                    {
+                        $footer.addClass('fixed-bottom');
+                    } else
+                    {
+                        $footer.removeClass('fixed-bottom');
+                    }
+                }
+
+                // Ajusta ao carregar e ao redimensionar
+                $(window).on('load resize', adjustFooter);
+                adjustFooter();
+
+                return this;
+            };
+        })(jQuery);
+
+        $(document).ready(function()
+        {
+            /**
+             * Abrir caixa informar CEP quando houver
+             * um click no botão informar cep.
+             */
+            $(".informar-cep .btn").click(function()
+            {
+                $(".informar-cep-box").css("display", "block");
+            });
+
+            /**
+             * Fechar caixa informar CEP quando houver
+             * um click no botão informar cep.
+             */
+            $(".informar-cep-box .button-close").click(function()
+            {
+                $(".informar-cep-box").css("display", "none");
+            });
+
+            /**
+             * Abrir sidebar mobile quando houver
+             * um click em bars.
+             */
+            $(".navbar-mobile .bars").click(function()
+            {
+                $(".sidebar-mobile").css("display", "block");
+            });
+
+            /**
+             * Fechar a sidebar mobile quando houver
+             * um click.
+             */
+            $(".sidebar-mobile .close .btn").click(function()
+            {
+                $(".sidebar-mobile").css("display", "none");
+            });
+
+            /**
+             * Abrir campo de busca em dispositivos
+             * mobile.
+             */
+            $(".btn-search").click(function()
+            {
+                $(".search-mobile").css("display", "block");
+            });
+
+            /**
+             * Fechar campo de busca em dispositivos
+             * mobile.
+             */
+            $(".btn-search-close").click(function()
+            {
+                $(".search-mobile").css("display", "none");
+            });
+        });
+
         $(function()
         {
             $('#site-footer').smartFooter();
