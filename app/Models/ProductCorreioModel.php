@@ -1,13 +1,34 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use CodeIgniter\Model;
+    use CodeIgniter\Model;
 
 
-class ProductCorreioModel extends Model
-{
-    protected $table = 'product_correios';
-    protected $primaryKey = 'id';
-    protected $allowedFields = ['user_id', 'product_id', 'weight', 'length', 'height', 'width'];
-}
+    /**
+     *
+     */
+    class ProductCorreioModel extends Model
+    {
+        /**
+         *
+         */
+        protected $table = 'product_correios';
+
+        /**
+         *
+         */
+        protected $primaryKey = 'id';
+
+        /**
+         *
+         */
+        protected $allowedFields = [
+            'user_id',
+            'product_id',
+            'weight',
+            'length',
+            'height',
+            'width'
+        ];
+    }

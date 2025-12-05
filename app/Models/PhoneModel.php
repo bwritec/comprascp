@@ -1,29 +1,58 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use CodeIgniter\Model;
+    use CodeIgniter\Model;
 
-class PhoneModel extends Model
-{
-    protected $table = 'phones';
-    protected $primaryKey = 'id';
-    protected $allowedFields = ['user_id', 'phone'];
-    protected $returnType = 'array';
-
-    public function getByUserId($userId)
+    /**
+     *
+     */
+    class PhoneModel extends Model
     {
-        return $this->where('user_id', $userId)->first();
-    }
+        /**
+         *
+         */
+        protected $table = 'phones';
 
-    public function saveOrUpdate($userId, $phone)
-    {
-        $existing = $this->getByUserId($userId);
+        /**
+         *
+         */
+        protected $primaryKey = 'id';
 
-        if ($existing) {
-            $this->update($existing['id'], ['phone' => $phone]);
-        } else {
-            $this->insert(['user_id' => $userId, 'phone' => $phone]);
+        /**
+         *
+         */
+        protected $allowedFields = [
+            'user_id',
+            'phone'
+        ];
+
+        /**
+         *
+         */
+        protected $returnType = 'array';
+
+        /**
+         *
+         */
+        public function getByUserId($userId)
+        {
+            return $this->where('user_id', $userId)->first();
+        }
+
+        /**
+         *
+         */
+        public function saveOrUpdate($userId, $phone)
+        {
+            $existing = $this->getByUserId($userId);
+
+            if ($existing)
+            {
+                $this->update($existing['id'], ['phone' => $phone]);
+            } else
+            {
+                $this->insert(['user_id' => $userId, 'phone' => $phone]);
+            }
         }
     }
-}

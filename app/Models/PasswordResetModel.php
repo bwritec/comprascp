@@ -1,29 +1,61 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use CodeIgniter\Model;
+    use CodeIgniter\Model;
 
-class PasswordResetModel extends Model
-{
-    protected $table = 'password_resets';
-    protected $allowedFields = ['email', 'token', 'created_at'];
 
-    public function createToken($email)
+    /**
+     *
+     */
+    class PasswordResetModel extends Model
     {
-        $token = bin2hex(random_bytes(32)); // gera token seguro
-        $this->where('email', $email)->delete(); // remove tokens antigos
-        $this->insert(['email' => $email, 'token' => $token]);
-        return $token;
-    }
+        /**
+         *
+         */
+        protected $table = 'password_resets';
 
-    public function getByToken($token)
-    {
-        return $this->where('token', $token)->first();
-    }
+        /**
+         *
+         */
+        protected $allowedFields = [
+            'email',
+            'token',
+            'created_at'
+        ];
 
-    public function deleteToken($token)
-    {
-        return $this->where('token', $token)->delete();
+        /**
+         *
+         */
+        public function createToken($email)
+        {
+            /**
+             * Gera token seguro
+             */
+            $token = bin2hex(random_bytes(32));
+
+            /**
+             * Remove tokens antigos
+             */
+            $this->where('email', $email)->delete();
+
+            $this->insert(['email' => $email, 'token' => $token]);
+            return $token;
+        }
+
+        /**
+         *
+         */
+        public function getByToken($token)
+        {
+            return $this->where('token', $token)->first();
+        }
+
+        /**
+         *
+         */
+        public function deleteToken($token)
+        {
+            return $this->where('token', $token)->delete();
+        }
     }
-}

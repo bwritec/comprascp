@@ -1,12 +1,38 @@
 <?php
 
-namespace App\Models;
+    namespace App\Models;
 
-use CodeIgniter\Model;
+    use CodeIgniter\Model;
 
-class ProductModel extends Model
-{
-    protected $table = 'products';
-    protected $primaryKey = 'id';
-    protected $allowedFields = ['user_id', 'name', 'conditions', 'description', 'amount', 'price', 'price_final', 'demonstration', 'paused', 'created_at'];
-}
+
+    /**
+     *
+     */
+    class ProductModel extends Model
+    {
+        /**
+         *
+         */
+        protected $table = 'products';
+
+        /**
+         *
+         */
+        protected $primaryKey = 'id';
+
+        /**
+         *
+         */
+        protected $allowedFields = [
+            'user_id',
+            'name',
+            'conditions',
+            'description',
+            'amount',
+            'price',
+            'price_final',
+            'demonstration',
+            'paused',
+            'created_at'
+        ];
+    }
