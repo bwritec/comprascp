@@ -82,20 +82,28 @@
 
             <h4 class="text-success mb-3">R$ <?= number_format($product['price_final'], 2, ',', '.') ?></h4>
 
-            <?php if (session()->has('user')): ?>
-                <form action="<?= site_url('favorite') ?>/<?= esc($product["id"]) ?>" method="post">
-                    <?= csrf_field() ?>
-
-                    <button class="btn btn-warning btn-lg mb-3">
+            <?php if ($product['demonstration']): ?>
+                <div style="width: 100%; display: block;">
+                    <button class="btn btn-warning disabled btn-lg mb-3">
                         <i class="fa-solid fa-heart"></i> Favoritar
                     </button>
-                </form>
-            <?php else: ?>
-                <div style="width: 100%; display: block;">
-                    <a href="<?= site_url('login') ?>" class="btn btn-warning btn-lg mb-3">
-                        <i class="fa-solid fa-heart"></i> Favoritar
-                    </a>
                 </div>
+            <?php else: ?>
+                <?php if (session()->has('user')): ?>
+                    <form action="<?= site_url('favorite') ?>/<?= esc($product["id"]) ?>" method="post">
+                        <?= csrf_field() ?>
+
+                        <button class="btn btn-warning btn-lg mb-3">
+                            <i class="fa-solid fa-heart"></i> Favoritar
+                        </button>
+                    </form>
+                <?php else: ?>
+                    <div style="width: 100%; display: block;">
+                        <a href="<?= site_url('login') ?>" class="btn btn-warning btn-lg mb-3">
+                            <i class="fa-solid fa-heart"></i> Favoritar
+                        </a>
+                    </div>
+                <?php endif; ?>
             <?php endif; ?>
 
             <?php if ($product['demonstration']): ?>
