@@ -658,7 +658,7 @@
     </div>
 
     <div class="sidebar-mobile">
-        <div class="box">
+        <div class="box" style="height: calc(100vh - 45px);">
             <div class="sidebar-logo">
                 <a href="<?= base_url() ?>index.php" class="text-dark">
                     <img src="<?= base_url() ?>dist/img/logo.png">
@@ -689,40 +689,38 @@
                 </span>
             </div>
 
-            <div class="cats">
-                <div class="dropdown categories">
-                    <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Categorias
-                    </button>
-
-                    <ul class="dropdown-menu">
-                        <?php foreach ($global_categories as $cat): ?>
-                            <?php if (isset($cat['children'])): ?>
-                                <li class="dropdown-submenu position-relative">
-                                    <a class="dropdown-item dropdown-toggle" href="<?= site_url('categorie/' . $cat['id']) ?>">
-                                        <?= esc($cat['name']) ?>
-                                    </a>
-
-                                    <ul class="dropdown-menu">
-                                        <?php foreach ($cat['children'] as $child): ?>
-                                            <li>
-                                                <a class="dropdown-item" href="<?= site_url('categorie/' . $child['id']) ?>">
-                                                    <?= esc($child['name']) ?>
-                                                </a>
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </li>
-                            <?php else: ?>
-                                <li>
-                                    <a class="dropdown-item" href="<?= site_url('categorie/' . $cat['id']) ?>">
-                                        <?= esc($cat['name']) ?>
-                                    </a>
-                                </li>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    </ul>
+            <div class="sidebar-menu clearfix" style="float: left; width: 100%; margin-top: 1rem;">
+                <div class="separator" style="width: 100%; height: 35px; background: #eee; line-height: 35px; padding: 0 1rem;">
+                    Categorias
                 </div>
+
+                <ul class="links-menu">
+                    <?php foreach ($global_categories as $cat): ?>
+                        <?php if (isset($cat['children'])): ?>
+                            <li>
+                                <a href="<?= site_url('categorie/' . $cat['id']) ?>">
+                                    <?= esc($cat['name']) ?>
+                                </a>
+
+                                <ul>
+                                    <?php foreach ($cat['children'] as $child): ?>
+                                        <li>
+                                            <a href="<?= site_url('categorie/' . $child['id']) ?>">
+                                                <?= esc($child['name']) ?>
+                                            </a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </li>
+                        <?php else: ?>
+                            <li>
+                                <a href="<?= site_url('categorie/' . $cat['id']) ?>">
+                                    <?= esc($cat['name']) ?>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </ul>
             </div>
 
             <div class="menu">
