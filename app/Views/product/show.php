@@ -163,7 +163,10 @@
             <div class="mb-3">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" id="cep" placeholder="Digite seu CEP">
-                    <button class="btn btn-warning" onclick="calcularFrete()">Calcular frete</button>
+
+                    <button class="btn btn-warning" onclick="calcularFrete()">
+                        Calcular frete
+                    </button>
                 </div>
 
                 <div id="freteResultado"></div>
