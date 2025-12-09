@@ -10,6 +10,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
 use App\Models\CategoryModel;
+use App\Models\LinkModel;
 
 /**
  * Class BaseController
@@ -27,6 +28,11 @@ abstract class BaseController extends Controller
      * A lista de categorias do site.
      */
     protected $global_categories;
+
+    /**
+     * A lista de links do site.
+     */
+    protected $global_links;
 
     /**
      * Instance of the main Request object.
@@ -68,6 +74,12 @@ abstract class BaseController extends Controller
         // E.g.: $this->session = service('session');
 
         /**
+         * Adicionar links ao menu do site.
+         */
+        $linkModel = new LinkModel();
+        $this->global_links = $linkModel->orderBy('id', 'ASC')->findAll();
+
+        /**
          * Adicionar categorias ao menu dropdown
          * do site.
          */
@@ -89,6 +101,9 @@ abstract class BaseController extends Controller
          * setData mantém/mescla dados compartilhados para as views
          * (setData espera um array associativo)
          */
-        $renderer->setData(['global_categories' => $this->global_categories]);
+        $renderer->setData([
+            'global_categories' => $this->global_categories,
+            'global_links' => $this->global_links
+        ]);
     }
 }

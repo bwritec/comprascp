@@ -624,6 +624,33 @@
             left: 100%;
             top: 0;
         }
+
+        .links
+        {
+            display: block;
+            height: 38px;
+            float: left;
+            width: auto;
+            padding: 0;
+            margin: 0;
+        }
+
+        .links li
+        {
+            list-style-type: none;
+            margin-right: 0.5rem;
+            line-height: 38px;
+            display: block;
+            height: 38px;
+            width: auto;
+            float: left;
+        }
+
+        .links a
+        {
+            text-decoration: none;
+            color: #000000;
+        }
     </style>
 
 </head>
@@ -721,6 +748,24 @@
                         <?php endif; ?>
                     <?php endforeach; ?>
                 </ul>
+            </div>
+
+            <div class="links-menu clearfix" style="float: left; width: 100%; margin-top: 1rem;">
+                <?php if (count($global_links) > 0): ?>
+                    <div style="width: 100%; height: 35px; background: #eee; line-height: 35px; padding: 0 1rem;">
+                        Links
+                    </div>
+
+                    <ul style="padding: 0 1rem;">
+                        <?php foreach ($global_links as $link): ?>
+                            <li style="list-style-type: none;">
+                                <a style="display: block; width: 100%; height: 35px; line-height: 35px; text-decoration: none; color: #333;" href="<?= esc($link["url"]) ?>" <?= $link["open_in_new_window"] ? 'target="_blank" rel="noopener noreferrer"' : ""; ?>>
+                                    <?= esc($link["name"]) ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
             </div>
 
             <div class="menu">
@@ -880,6 +925,18 @@
                             <?php endforeach; ?>
                         </ul>
                     </div>
+
+                    <?php if (count($global_links) > 0): ?>
+                        <ul class="links">
+                            <?php foreach ($global_links as $link): ?>
+                                <li>
+                                    <a href="<?= esc($link["url"]) ?>" <?= $link["open_in_new_window"] ? 'target="_blank" rel="noopener noreferrer"' : ""; ?>>
+                                        <?= esc($link["name"]) ?>
+                                    </a>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
 
                     <ul class="actions">
                         <?php if (session()->has('user')): ?>
