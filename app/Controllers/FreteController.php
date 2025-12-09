@@ -3,12 +3,13 @@
     namespace App\Controllers;
 
     use App\Controllers\BaseController;
+    use App\Models\ProductCorreioModel;
     use App\Models\AddressModel;
     use App\Models\ProductModel;
 
 
     /**
-     *
+     * Calculadora de frete para ñ Gateway.
      */
     class FreteController extends BaseController
     {
@@ -20,6 +21,7 @@
             /**
              * Objetos
              */
+            $productCorreioModel = new ProductCorreioModel();
             $addressModel = new AddressModel();
             $productModel = new ProductModel();
 
@@ -119,6 +121,13 @@
                 }
             }
 
+            /**
+             * Obter informações do pacote.
+             */
+            $productDetails = $productCorreioModel
+                ->where("product_id", $product_id)
+                ->first();
+
             $pedido = [
                 "from" => [
                     /**
@@ -135,12 +144,18 @@
                 ],
 
                 "package" => [
-                    "weight" => 1,        // kg
-                    "height" => 10,       // cm
-                    "width" => 15,        // cm
-                    "length" => 20        // cm
+                    "weight" => $productDetails["weight"], // kg
+                    "height" => $productDetails["height"], // cm
+                    "width" => $productDetails["width"],   // cm
+                    "length" => $productDetails["length"]  // cm
                 ],
-                "services" => "1,2" // 1=PAC, 2=SEDEX (Correios)
+
+                /**
+                 * (Correios)
+                 * 1=PAC,
+                 * 2=SEDEX.
+                 */
+                "services" => "1,2"
             ];
 
             $ch = curl_init("https://www.melhorenvio.com.br/api/v2/me/shipment/calculate");
