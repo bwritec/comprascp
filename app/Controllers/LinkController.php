@@ -18,6 +18,7 @@
         {
             $model = new LinkModel();
             $data['links'] = $model->findAll();
+            $data['title'] = "Links";
 
             return view('dashboard/links/index', $data);
         }
@@ -27,7 +28,9 @@
          */
         public function create()
         {
-            return view('dashboard/links/create');
+            return view('dashboard/links/create', [
+                'title' => "Novo Link"
+            ]);
         }
 
         /**
@@ -53,6 +56,7 @@
         {
             $model = new LinkModel();
             $data['link'] = $model->find($id);
+            $data['title'] = "Editar Link";
 
             return view('dashboard/links/edit', $data);
         }
