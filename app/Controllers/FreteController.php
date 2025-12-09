@@ -4,6 +4,8 @@
 
     use App\Controllers\BaseController;
     use App\Models\AddressModel;
+    use App\Models\ProductModel;
+
 
     /**
      *
@@ -15,10 +17,79 @@
          */
         public function calcular_melhorenvio()
         {
+            /**
+             * Objetos
+             */
             $addressModel = new AddressModel();
+            $productModel = new ProductModel();
 
-            $user = session()->get('user');
+            $product_id = $this->request->getGet("product_id");
+
+            /**
+             * Caso não exista um product_id.
+             */
+            if (strlen($product_id) == 0)
+            {
+                return $this->response->setJSON([
+                    "errors" => array(
+                        "Não foi possivel obter o id do produto"
+                    )
+                ]);
+            }
+
+            $productModel = new ProductModel();
+            $product_user_id = 0;
+            $product = $productModel
+                ->where("id", $product_id)
+                ->first();
+
+            /**
+             * Caso não exista um produto com esse id.
+             */
+            if (is_null($product))
+            {
+                return $this->response->setJSON([
+                    "errors" => array(
+                        "Não foi possivel obter informações do produto"
+                    )
+                ]);
+            } else
+            {
+                /**
+                 * Vamos obter o id do produto.
+                 */
+                $product_user_id = $product["user_id"];
+            }
+
+            /**
+             * Obter cep de origem.
+             */
+            $user_address = $addressModel
+                ->where("user_id", $product_user_id)
+                ->first();
+
+            /**
+             * O cep de origem.
+             */
+            $origin_cep = "00000000";
+
+            /**
+             * Sé o usuario tiver um endereço.
+             */
+            if (!is_null($user_address))
+            {
+                $origin_cep = $user_address["cep"];
+            }
+
+            /**
+             * Configurações do gateway.
+             */
             $token = env('melhorenvio.token');
+
+            /**
+             * Obter cep de destino.
+             */
+            $user = session()->get('user');
             $destination_cep = $this->request->getGet('cep');
 
             if (!$user)
@@ -53,7 +124,7 @@
                     /**
                      * origem
                      */
-                    "postal_code" => "01001-000"
+                    "postal_code" => $origin_cep
                 ],
 
                 "to" => [
@@ -86,7 +157,8 @@
 
             $response = curl_exec($ch);
 
-            if (curl_errno($ch)) {
+            if (curl_errno($ch))
+            {
                 return $this->response->setJSON([
                     'erro' => curl_error($ch)
                 ]);
@@ -94,7 +166,9 @@
 
             curl_close($ch);
 
-            return $this->response->setJSON(json_decode($response, true));
+            return $this->response->setJSON(
+                json_decode($response, true)
+            );
         }
 
         /**
