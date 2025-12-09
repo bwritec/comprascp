@@ -3,7 +3,7 @@
     namespace App\Controllers;
 
     use App\Controllers\BaseController;
-
+    use App\Models\AddressModel;
 
     /**
      *
@@ -15,14 +15,54 @@
          */
         public function calcular_melhorenvio()
         {
-            /**
-             * Coloque aqui seu token do Melhor Envio
-             */
+            $addressModel = new AddressModel();
+
+            $user = session()->get('user');
             $token = env('melhorenvio.token');
+            $destination_cep = $this->request->getGet('cep');
+
+            if (!$user)
+            {
+                /**
+                 * Vamos usar um cep em branco para essa request.
+                 */
+                if (strlen($destination_cep) == 0)
+                {
+                    $destination_cep = "00000000";
+                }
+            } else
+            {
+                $user_address = $addressModel
+                    ->where("user_id", $user["id"])
+                    ->first();
+
+                if (is_null($user_address))
+                {
+                    $destination_cep = "00000000";
+                } else
+                {
+                    if (strlen($destination_cep) == 0)
+                    {
+                        $destination_cep = $user_address["cep"];
+                    }
+                }
+            }
 
             $pedido = [
-                "from" => ["postal_code" => "01001-000"], // origem
-                "to" => ["postal_code" => $this->request->getGet('cep')], // destino
+                "from" => [
+                    /**
+                     * origem
+                     */
+                    "postal_code" => "01001-000"
+                ],
+
+                "to" => [
+                    /**
+                     * destino
+                     */
+                    "postal_code" => $destination_cep
+                ],
+
                 "package" => [
                     "weight" => 1,        // kg
                     "height" => 10,       // cm
