@@ -90,7 +90,13 @@
                             Nome
                         </label>
 
-                        <input type="text" class="form-control" name="name" required>
+                        <input type="text" class="form-control <?= isset($errors['name']) ? 'is-invalid' : '' ?>" name="name">
+
+                        <?php if (isset($errors['name'])): ?>
+                            <div class="invalid-feedback">
+                                <?= esc($errors['name']) ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="mb-3">
@@ -98,7 +104,13 @@
                             URL
                         </label>
 
-                        <input type="text" class="form-control" name="url" required>
+                        <input type="text" class="form-control <?= isset($errors['url']) ? 'is-invalid' : '' ?>" name="url">
+
+                        <?php if (isset($errors['url'])): ?>
+                            <div class="invalid-feedback">
+                                <?= esc($errors['url']) ?>
+                            </div>
+                        <?php endif; ?>
                     </div>
 
                     <div class="mb-3">

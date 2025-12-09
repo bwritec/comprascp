@@ -74,6 +74,20 @@
                 return redirect()->to('/dashboard');
             }
 
+            $validation = \Config\Services::validation();
+            $validation->setRules([
+                'name' => 'required',
+                'url' => 'required',
+            ]);
+
+            if (!$validation->withRequest($this->request)->run())
+            {
+                return view('dashboard/links/create', [
+                    'title'  => 'Novo Link',
+                    'errors' => $validation->getErrors()
+                ]);
+            }
+
             $model = new LinkModel();
             $model->save([
                 'name' => $this->request->getPost('name'),
@@ -123,6 +137,23 @@
             if ($user["admin"] !== '1')
             {
                 return redirect()->to('/dashboard');
+            }
+
+            $validation = \Config\Services::validation();
+            $validation->setRules([
+                'name' => 'required',
+                'url' => 'required',
+            ]);
+
+            if (!$validation->withRequest($this->request)->run())
+            {
+                $model = new LinkModel();
+
+                return view('dashboard/links/edit', [
+                    'title'  => 'Editar Link',
+                    'link' => $model->find($id),
+                    'errors' => $validation->getErrors()
+                ]);
             }
 
             $model = new LinkModel();
