@@ -16,6 +16,18 @@
          */
         public function index()
         {
+            $user = session()->get('user');
+
+            if (!$user)
+            {
+                return redirect()->to('/login');
+            }
+
+            if ($user["admin"] !== '1')
+            {
+                return redirect()->to('/dashboard');
+            }
+
             $model = new LinkModel();
             $data['links'] = $model->findAll();
             $data['title'] = "Links";
@@ -28,6 +40,18 @@
          */
         public function create()
         {
+            $user = session()->get('user');
+
+            if (!$user)
+            {
+                return redirect()->to('/login');
+            }
+
+            if ($user["admin"] !== '1')
+            {
+                return redirect()->to('/dashboard');
+            }
+
             return view('dashboard/links/create', [
                 'title' => "Novo Link"
             ]);
@@ -38,8 +62,19 @@
          */
         public function store()
         {
-            $model = new LinkModel();
+            $user = session()->get('user');
 
+            if (!$user)
+            {
+                return redirect()->to('/login');
+            }
+
+            if ($user["admin"] !== '1')
+            {
+                return redirect()->to('/dashboard');
+            }
+
+            $model = new LinkModel();
             $model->save([
                 'name' => $this->request->getPost('name'),
                 'url' => $this->request->getPost('url'),
@@ -54,6 +89,18 @@
          */
         public function edit($id)
         {
+            $user = session()->get('user');
+
+            if (!$user)
+            {
+                return redirect()->to('/login');
+            }
+
+            if ($user["admin"] !== '1')
+            {
+                return redirect()->to('/dashboard');
+            }
+
             $model = new LinkModel();
             $data['link'] = $model->find($id);
             $data['title'] = "Editar Link";
@@ -66,6 +113,18 @@
          */
         public function update($id)
         {
+            $user = session()->get('user');
+
+            if (!$user)
+            {
+                return redirect()->to('/login');
+            }
+
+            if ($user["admin"] !== '1')
+            {
+                return redirect()->to('/dashboard');
+            }
+
             $model = new LinkModel();
             $model->update($id, [
                 'name' => $this->request->getPost('name'),
@@ -81,6 +140,18 @@
          */
         public function delete($id)
         {
+            $user = session()->get('user');
+
+            if (!$user)
+            {
+                return redirect()->to('/login');
+            }
+
+            if ($user["admin"] !== '1')
+            {
+                return redirect()->to('/dashboard');
+            }
+
             $model = new LinkModel();
             $model->delete($id);
 
