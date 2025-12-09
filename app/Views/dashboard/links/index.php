@@ -101,7 +101,7 @@
                         </th>
 
                         <th>
-                            Abrir em Nova Aba?
+                            Abrir em Nova Aba ?
                         </th>
 
                         <th>
