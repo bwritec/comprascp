@@ -1007,15 +1007,10 @@
                         Aplicar
                     </button>
                 </form>
-
-                <a href="#">
-                    Não sei o meu CEP.
-                </a>
-
             </div>
 
             <div class="card-footer">
-                <button class="btn btn-sm btn-primary button-close">
+                <button class="btn btn-primary button-close">
                     Fechar
                 </button>
             </div>
