@@ -178,27 +178,45 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <?php if (!empty($characteristics)): ?>
-                <h5 class="mt-4">
-                    Características
-                </h5>
+            <div class="accordion" id="accordionContainer">
+                <?php if (!empty($characteristics)): ?>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCharacteristics" aria-expanded="true" aria-controls="collapseCharacteristics">
+                                Características
+                            </button>
+                        </h2>
 
-                <ul class="list-group list-group-flush mb-3">
-                    <?php foreach ($characteristics as $char): ?>
-                        <li class="list-group-item">
-                            <?= esc($char['characteristic']) ?>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php endif; ?>
+                        <div id="collapseCharacteristics" class="accordion-collapse collapse show" data-bs-parent="#accordionContainer">
+                            <div class="accordion-body">
+                                <ul class="list-group list-group-flush">
+                                    <?php foreach ($characteristics as $char): ?>
+                                        <li class="list-group-item">
+                                            <?= esc($char['characteristic']) ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
 
-            <h5>
-                Descrição
-            </h5>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription" aria-expanded="false" aria-controls="collapseDescription">
+                            Descrição
+                        </button>
+                    </h2>
 
-            <p>
-                <?= nl2br(esc($product['description'])) ?>
-            </p>
+                    <div id="collapseDescription" class="accordion-collapse collapse" data-bs-parent="#accordionContainer">
+                        <div class="accordion-body">
+                            <p>
+                                <?= nl2br(esc($product['description'])) ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
