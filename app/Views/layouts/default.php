@@ -894,7 +894,7 @@
 
                 <div class="col-12 col-md-9 col-lg-10">
                     <div class="dropdown categories">
-                        <button class="btn btn-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; color: #000;">
+                        <button class="btn btn-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; color: #000; padding-left: 0;padding-right: 0; margin-right: 8px;">
                             Categorias
                         </button>
 
