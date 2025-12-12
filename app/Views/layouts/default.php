@@ -639,7 +639,7 @@
         .links li
         {
             list-style-type: none;
-            margin-right: 0.5rem;
+            margin-right: 1rem;
             line-height: 38px;
             display: block;
             height: 38px;
@@ -894,7 +894,7 @@
 
                 <div class="col-12 col-md-9 col-lg-10">
                     <div class="dropdown categories">
-                        <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; color: #000;">
                             Categorias
                         </button>
 
