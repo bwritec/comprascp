@@ -248,8 +248,6 @@
                                     </div>
                                 <?php endif; ?>
                             </div>
-
-
                         </div>
 
                         <div class="tab-pane fade" id="email" role="tabpanel">
