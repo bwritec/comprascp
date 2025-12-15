@@ -56,6 +56,12 @@
     $routes->get('/dashboard', 'DashboardController::index');
 
     /**
+     * /dashboard/env
+     */
+    $routes->get('/dashboard/env', 'EnvController::index');
+    $routes->post('/dashboard/env', 'EnvController::save');
+
+    /**
      * /dashboard/contact
      */
     $routes->get('/dashboard/contact', 'PhoneController::index');

@@ -11,6 +11,46 @@
     class EnvController extends BaseController
     {
         /**
+         *
+         */
+        public function index()
+        {
+            $user = session()->get('user');
+
+            if (!$user)
+            {
+                return redirect()->to('/login');
+            }
+
+            if ($user["admin"] !== '1')
+            {
+                return redirect()->to('/dashboard');
+            }
+
+            return view('dashboard/env', [
+                "title" => "Variáveis de ambiente"
+            ]);
+        }
+
+        /**
+         *
+         */
+        public function save()
+        {
+            $user = session()->get('user');
+
+            if (!$user)
+            {
+                return redirect()->to('/login');
+            }
+
+            if ($user["admin"] !== '1')
+            {
+                return redirect()->to('/dashboard');
+            }
+        }
+
+        /**
          * Alterar um valor de uma chave .env
          * 
          * Exemplo:
