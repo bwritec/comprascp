@@ -73,6 +73,12 @@
                                 Links
                             </a>
                         </li>
+
+                        <li class="list-group-item">
+                            <a href="<?= base_url() ?>index.php/dashboard/env">
+                                Env
+                            </a>
+                        </li>
                     </ul>
                 <?php endif; ?>
             </div>
