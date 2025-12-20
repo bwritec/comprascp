@@ -13,86 +13,86 @@ class ComposerStaticInit657ac079313fab046eb8c29fe1d6992b
     );
 
     public static $prefixLengthsPsr4 = array (
-        'T' => 
+        'T' =>
         array (
             'Tests\\Support\\' => 14,
         ),
-        'P' => 
+        'P' =>
         array (
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
             'PhpParser\\' => 10,
         ),
-        'L' => 
+        'L' =>
         array (
             'Laminas\\Escaper\\' => 16,
         ),
-        'F' => 
+        'F' =>
         array (
             'Faker\\' => 6,
         ),
-        'D' => 
+        'D' =>
         array (
             'DeepCopy\\' => 9,
         ),
-        'C' => 
+        'C' =>
         array (
             'Config\\' => 7,
             'CodeIgniter\\' => 12,
         ),
-        'A' => 
+        'A' =>
         array (
             'App\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Tests\\Support\\' => 
+        'Tests\\Support\\' =>
         array (
             0 => __DIR__ . '/../..' . '/tests/_support',
         ),
-        'Psr\\Log\\' => 
+        'Psr\\Log\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
         ),
-        'Psr\\Container\\' => 
+        'Psr\\Container\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
-        'PhpParser\\' => 
+        'PhpParser\\' =>
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
-        'Laminas\\Escaper\\' => 
+        'Laminas\\Escaper\\' =>
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-escaper/src',
         ),
-        'Faker\\' => 
+        'Faker\\' =>
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
         ),
-        'DeepCopy\\' => 
+        'DeepCopy\\' =>
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
-        'Config\\' => 
+        'Config\\' =>
         array (
             0 => __DIR__ . '/../..' . '/app/Config',
         ),
-        'CodeIgniter\\' => 
+        'CodeIgniter\\' =>
         array (
             0 => __DIR__ . '/..' . '/codeigniter4/framework/system',
         ),
-        'App\\' => 
+        'App\\' =>
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
     );
 
     public static $prefixesPsr0 = array (
-        'o' => 
+        'o' =>
         array (
-            'org\\bovigo\\vfs\\' => 
+            'org\\bovigo\\vfs\\' =>
             array (
                 0 => __DIR__ . '/..' . '/mikey179/vfsstream/src/main/php',
             ),
@@ -100,8 +100,38 @@ class ComposerStaticInit657ac079313fab046eb8c29fe1d6992b
     );
 
     public static $classMap = array (
+        'App\\Controllers\\AddressController' => __DIR__ . '/../..' . '/app/Controllers/AddressController.php',
         'App\\Controllers\\BaseController' => __DIR__ . '/../..' . '/app/Controllers/BaseController.php',
-        'App\\Controllers\\Home' => __DIR__ . '/../..' . '/app/Controllers/Home.php',
+        'App\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Controllers/CategoryController.php',
+        'App\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Controllers/DashboardController.php',
+        'App\\Controllers\\EnvController' => __DIR__ . '/../..' . '/app/Controllers/EnvController.php',
+        'App\\Controllers\\FavoriteController' => __DIR__ . '/../..' . '/app/Controllers/FavoriteController.php',
+        'App\\Controllers\\FreteController' => __DIR__ . '/../..' . '/app/Controllers/FreteController.php',
+        'App\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Controllers/HomeController.php',
+        'App\\Controllers\\LinkController' => __DIR__ . '/../..' . '/app/Controllers/LinkController.php',
+        'App\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Controllers/LoginController.php',
+        'App\\Controllers\\PasswordController' => __DIR__ . '/../..' . '/app/Controllers/PasswordController.php',
+        'App\\Controllers\\PhoneController' => __DIR__ . '/../..' . '/app/Controllers/PhoneController.php',
+        'App\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Controllers/ProductController.php',
+        'App\\Controllers\\ProductsController' => __DIR__ . '/../..' . '/app/Controllers/ProductsController.php',
+        'App\\Controllers\\RegisterController' => __DIR__ . '/../..' . '/app/Controllers/RegisterController.php',
+        'App\\Controllers\\SellController' => __DIR__ . '/../..' . '/app/Controllers/SellController.php',
+        'App\\Database\\Seeds\\CategorieSeeder' => __DIR__ . '/../..' . '/app/Database/Seeds/CategorieSeeder.php',
+        'App\\Filters\\AuthFilter' => __DIR__ . '/../..' . '/app/Filters/AuthFilter.php',
+        'App\\Models\\AddressModel' => __DIR__ . '/../..' . '/app/Models/AddressModel.php',
+        'App\\Models\\CategoryModel' => __DIR__ . '/../..' . '/app/Models/CategoryModel.php',
+        'App\\Models\\FavoriteModel' => __DIR__ . '/../..' . '/app/Models/FavoriteModel.php',
+        'App\\Models\\LinkModel' => __DIR__ . '/../..' . '/app/Models/LinkModel.php',
+        'App\\Models\\PasswordResetModel' => __DIR__ . '/../..' . '/app/Models/PasswordResetModel.php',
+        'App\\Models\\PhoneModel' => __DIR__ . '/../..' . '/app/Models/PhoneModel.php',
+        'App\\Models\\ProductCategoryModel' => __DIR__ . '/../..' . '/app/Models/ProductCategoryModel.php',
+        'App\\Models\\ProductCharacteristicModel' => __DIR__ . '/../..' . '/app/Models/ProductCharacteristicModel.php',
+        'App\\Models\\ProductCorreioModel' => __DIR__ . '/../..' . '/app/Models/ProductCorreioModel.php',
+        'App\\Models\\ProductModel' => __DIR__ . '/../..' . '/app/Models/ProductModel.php',
+        'App\\Models\\ProductPhotoModel' => __DIR__ . '/../..' . '/app/Models/ProductPhotoModel.php',
+        'App\\Models\\ProductThumbnailModel' => __DIR__ . '/../..' . '/app/Models/ProductThumbnailModel.php',
+        'App\\Models\\UserModel' => __DIR__ . '/../..' . '/app/Models/UserModel.php',
+        'App\\Validation\\MyRules' => __DIR__ . '/../..' . '/app/Validation/MyRules.php',
         'CodeIgniter\\API\\ResponseTrait' => __DIR__ . '/..' . '/codeigniter4/framework/system/API/ResponseTrait.php',
         'CodeIgniter\\Autoloader\\Autoloader' => __DIR__ . '/..' . '/codeigniter4/framework/system/Autoloader/Autoloader.php',
         'CodeIgniter\\Autoloader\\FileLocator' => __DIR__ . '/..' . '/codeigniter4/framework/system/Autoloader/FileLocator.php',
