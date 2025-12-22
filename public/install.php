@@ -69,7 +69,66 @@
              */
             if ($_GET["step"] == "1")
             {
-                echo "Entrou aqui";
+                /**
+                 * Validação.
+                 */
+                if (is_empty("app_name"))          { if (array_key_exists("app_name", $errors))          { $errors["app_name"] = array();          } array_push($errors["app_name"], "Você deve preencher esse campo."); }
+                if (is_empty("app_url"))           { if (array_key_exists("app_url", $errors))           { $errors["app_url"] = array();           }  array_push($errors["app_url"], "Você deve preencher esse campo."); }
+                if (is_empty("app_rate"))          { if (array_key_exists("app_rate", $errors))          { $errors["app_rate"] = array();          } array_push($errors["app_rate"], "Você deve preencher esse campo."); }
+
+                if (is_empty("database_hostname")) { if (array_key_exists("database_hostname", $errors)) { $errors["database_hostname"] = array(); } array_push($errors["database_hostname"], "Você deve preencher esse campo."); }
+                if (is_empty("database_port"))     { if (array_key_exists("database_port",     $errors)) { $errors["database_port"] = array();     } array_push($errors["database_port"], "Você deve preencher esse campo."); }
+                if (is_empty("database_name"))     { if (array_key_exists("database_name",     $errors)) { $errors["database_name"] = array();     } array_push($errors["database_name"], "Você deve preencher esse campo."); }
+                if (is_empty("database_username")) { if (array_key_exists("database_username", $errors)) { $errors["database_username"] = array(); } array_push($errors["database_username"], "Você deve preencher esse campo."); }
+                if (is_empty("database_password")) { if (array_key_exists("database_password", $errors)) { $errors["database_password"] = array(); } array_push($errors["database_password"], "Você deve preencher esse campo."); }
+
+                if (is_empty("email_from_email"))  { if (array_key_exists("email_from_email", $errors))  { $errors["email_from_email"] = array();  } array_push($errors["email_from_email"], "Você deve preencher esse campo."); }
+                if (is_empty("email_from_name"))   { if (array_key_exists("email_from_name", $errors))   { $errors["email_from_name"] = array();   } array_push($errors["email_from_name"], "Você deve preencher esse campo."); }
+                if (is_empty("email_protocol"))    { if (array_key_exists("email_protocol", $errors))    { $errors["email_protocol"] = array();    } array_push($errors["email_protocol"], "Você deve preencher esse campo."); }
+                if (is_empty("email_host"))        { if (array_key_exists("email_host", $errors))        { $errors["email_host"] = array();        } array_push($errors["email_host"], "Você deve preencher esse campo."); }
+                if (is_empty("email_user"))        { if (array_key_exists("email_user", $errors))        { $errors["email_user"] = array();        } array_push($errors["email_user"], "Você deve preencher esse campo."); }
+                if (is_empty("email_password"))    { if (array_key_exists("email_password", $errors))    { $errors["email_password"] = array();    } array_push($errors["email_password"], "Você deve preencher esse campo."); }
+                if (is_empty("email_port"))        { if (array_key_exists("email_port", $errors))        { $errors["email_port"] = array();        } array_push($errors["email_port"], "Você deve preencher esse campo."); }
+                if (is_empty("email_crypto"))      { if (array_key_exists("email_crypto", $errors))      { $errors["email_crypto"] = array();      } array_push($errors["email_crypto"], "Você deve preencher esse campo."); }
+
+                if (is_empty("token_melhorenvio")) { if (array_key_exists("token_melhorenvio", $errors)) { $errors["token_melhorenvio"] = array(); } array_push($errors["token_melhorenvio"], "Você deve preencher esse campo."); }
+
+                /**
+                 * Questão: Existe errors no formulário ?
+                 */
+                if (count($errors) == 0)
+                {
+                    /**
+                     * Vamos salvar a env.
+                     */
+                }
+
+                /**
+                 * App
+                 *     app_name
+                 *     app_url
+                 *     app_rate
+                 *
+                 * Database
+                 *     database_hostname
+                 *     database_port
+                 *     database_name
+                 *     database_username
+                 *     database_password
+                 *
+                 * Email
+                 *     email_from_email
+                 *     email_from_name
+                 *     email_protocol
+                 *     email_host
+                 *     email_user
+                 *     email_password
+                 *     email_port
+                 *     email_crypto
+                 *
+                 * Token
+                 *     token_melhorenvio
+                 */
             }
         }
     }
