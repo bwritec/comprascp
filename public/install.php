@@ -1,5 +1,9 @@
 <?php
 
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+
     /**
      * Caminho do .env (ajuste se necessário)
      */
@@ -72,26 +76,26 @@
                 /**
                  * Validação.
                  */
-                if (is_empty("app_name"))          { if (array_key_exists("app_name", $errors))          { $errors["app_name"] = array();          } array_push($errors["app_name"], "Você deve preencher esse campo."); }
-                if (is_empty("app_url"))           { if (array_key_exists("app_url", $errors))           { $errors["app_url"] = array();           }  array_push($errors["app_url"], "Você deve preencher esse campo."); }
-                if (is_empty("app_rate"))          { if (array_key_exists("app_rate", $errors))          { $errors["app_rate"] = array();          } array_push($errors["app_rate"], "Você deve preencher esse campo."); }
+                if (is_empty("app_name"))          { if (!array_key_exists("app_name", $errors))          { $errors["app_name"] = array();          } array_push($errors["app_name"], "Você deve preencher esse campo."); }
+                if (is_empty("app_url"))           { if (!array_key_exists("app_url", $errors))           { $errors["app_url"] = array();           } array_push($errors["app_url"], "Você deve preencher esse campo."); }
+                if (is_empty("app_rate"))          { if (!array_key_exists("app_rate", $errors))          { $errors["app_rate"] = array();          } array_push($errors["app_rate"], "Você deve preencher esse campo."); }
 
-                if (is_empty("database_hostname")) { if (array_key_exists("database_hostname", $errors)) { $errors["database_hostname"] = array(); } array_push($errors["database_hostname"], "Você deve preencher esse campo."); }
-                if (is_empty("database_port"))     { if (array_key_exists("database_port",     $errors)) { $errors["database_port"] = array();     } array_push($errors["database_port"], "Você deve preencher esse campo."); }
-                if (is_empty("database_name"))     { if (array_key_exists("database_name",     $errors)) { $errors["database_name"] = array();     } array_push($errors["database_name"], "Você deve preencher esse campo."); }
-                if (is_empty("database_username")) { if (array_key_exists("database_username", $errors)) { $errors["database_username"] = array(); } array_push($errors["database_username"], "Você deve preencher esse campo."); }
-                if (is_empty("database_password")) { if (array_key_exists("database_password", $errors)) { $errors["database_password"] = array(); } array_push($errors["database_password"], "Você deve preencher esse campo."); }
+                if (is_empty("database_hostname")) { if (!array_key_exists("database_hostname", $errors)) { $errors["database_hostname"] = array(); } array_push($errors["database_hostname"], "Você deve preencher esse campo."); }
+                if (is_empty("database_port"))     { if (!array_key_exists("database_port",     $errors)) { $errors["database_port"] = array();     } array_push($errors["database_port"], "Você deve preencher esse campo."); }
+                if (is_empty("database_name"))     { if (!array_key_exists("database_name",     $errors)) { $errors["database_name"] = array();     } array_push($errors["database_name"], "Você deve preencher esse campo."); }
+                if (is_empty("database_username")) { if (!array_key_exists("database_username", $errors)) { $errors["database_username"] = array(); } array_push($errors["database_username"], "Você deve preencher esse campo."); }
+                if (is_empty("database_password")) { if (!array_key_exists("database_password", $errors)) { $errors["database_password"] = array(); } array_push($errors["database_password"], "Você deve preencher esse campo."); }
 
-                if (is_empty("email_from_email"))  { if (array_key_exists("email_from_email", $errors))  { $errors["email_from_email"] = array();  } array_push($errors["email_from_email"], "Você deve preencher esse campo."); }
-                if (is_empty("email_from_name"))   { if (array_key_exists("email_from_name", $errors))   { $errors["email_from_name"] = array();   } array_push($errors["email_from_name"], "Você deve preencher esse campo."); }
-                if (is_empty("email_protocol"))    { if (array_key_exists("email_protocol", $errors))    { $errors["email_protocol"] = array();    } array_push($errors["email_protocol"], "Você deve preencher esse campo."); }
-                if (is_empty("email_host"))        { if (array_key_exists("email_host", $errors))        { $errors["email_host"] = array();        } array_push($errors["email_host"], "Você deve preencher esse campo."); }
-                if (is_empty("email_user"))        { if (array_key_exists("email_user", $errors))        { $errors["email_user"] = array();        } array_push($errors["email_user"], "Você deve preencher esse campo."); }
-                if (is_empty("email_password"))    { if (array_key_exists("email_password", $errors))    { $errors["email_password"] = array();    } array_push($errors["email_password"], "Você deve preencher esse campo."); }
-                if (is_empty("email_port"))        { if (array_key_exists("email_port", $errors))        { $errors["email_port"] = array();        } array_push($errors["email_port"], "Você deve preencher esse campo."); }
-                if (is_empty("email_crypto"))      { if (array_key_exists("email_crypto", $errors))      { $errors["email_crypto"] = array();      } array_push($errors["email_crypto"], "Você deve preencher esse campo."); }
+                if (is_empty("email_from_email"))  { if (!array_key_exists("email_from_email", $errors))  { $errors["email_from_email"] = array();  } array_push($errors["email_from_email"], "Você deve preencher esse campo."); }
+                if (is_empty("email_from_name"))   { if (!array_key_exists("email_from_name", $errors))   { $errors["email_from_name"] = array();   } array_push($errors["email_from_name"], "Você deve preencher esse campo."); }
+                if (is_empty("email_protocol"))    { if (!array_key_exists("email_protocol", $errors))    { $errors["email_protocol"] = array();    } array_push($errors["email_protocol"], "Você deve preencher esse campo."); }
+                if (is_empty("email_host"))        { if (!array_key_exists("email_host", $errors))        { $errors["email_host"] = array();        } array_push($errors["email_host"], "Você deve preencher esse campo."); }
+                if (is_empty("email_user"))        { if (!array_key_exists("email_user", $errors))        { $errors["email_user"] = array();        } array_push($errors["email_user"], "Você deve preencher esse campo."); }
+                if (is_empty("email_password"))    { if (!array_key_exists("email_password", $errors))    { $errors["email_password"] = array();    } array_push($errors["email_password"], "Você deve preencher esse campo."); }
+                if (is_empty("email_port"))        { if (!array_key_exists("email_port", $errors))        { $errors["email_port"] = array();        } array_push($errors["email_port"], "Você deve preencher esse campo."); }
+                if (is_empty("email_crypto"))      { if (!array_key_exists("email_crypto", $errors))      { $errors["email_crypto"] = array();      } array_push($errors["email_crypto"], "Você deve preencher esse campo."); }
 
-                if (is_empty("token_melhorenvio")) { if (array_key_exists("token_melhorenvio", $errors)) { $errors["token_melhorenvio"] = array(); } array_push($errors["token_melhorenvio"], "Você deve preencher esse campo."); }
+                if (is_empty("token_melhorenvio")) { if (!array_key_exists("token_melhorenvio", $errors)) { $errors["token_melhorenvio"] = array(); } array_push($errors["token_melhorenvio"], "Você deve preencher esse campo."); }
 
                 /**
                  * Questão: Existe errors no formulário ?
@@ -215,6 +219,14 @@
                                                 </label>
 
                                                 <input type="text" name="app_name" id="app_name" class="form-control">
+
+                                                <?php if (array_key_exists("app_name", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["app_name"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
 
                                             <div class="mb-3">
@@ -223,6 +235,14 @@
                                                 </label>
 
                                                 <input type="text" name="app_url" id="app_url" class="form-control">
+
+                                                <?php if (array_key_exists("app_url", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["app_url"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
 
                                             <div class="mb-3">
@@ -237,6 +257,14 @@
                                                         %
                                                     </span>
                                                 </div>
+
+                                                <?php if (array_key_exists("app_rate", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["app_rate"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
 
@@ -247,6 +275,14 @@
                                                 </label>
 
                                                 <input type="text" name="database_hostname" id="database_hostname" class="form-control">
+
+                                                <?php if (array_key_exists("database_hostname", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["database_hostname"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
 
                                             <div class="mb-3">
@@ -255,6 +291,14 @@
                                                 </label>
 
                                                 <input type="text" name="database_port" id="database_port" class="form-control">
+
+                                                <?php if (array_key_exists("database_port", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["database_port"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
 
                                             <div class="mb-3">
@@ -263,6 +307,14 @@
                                                 </label>
 
                                                 <input type="text" name="database_name" id="database_name" class="form-control">
+
+                                                <?php if (array_key_exists("database_name", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["database_name"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
 
                                             <div class="mb-3">
@@ -271,6 +323,14 @@
                                                 </label>
 
                                                 <input type="text" name="database_username" id="database_username" class="form-control">
+
+                                                <?php if (array_key_exists("database_username", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["database_username"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
 
                                             <div class="mb-3">
@@ -279,6 +339,14 @@
                                                 </label>
 
                                                 <input type="text" name="database_password" id="database_password" class="form-control">
+
+                                                <?php if (array_key_exists("database_password", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["database_password"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
 
@@ -289,6 +357,14 @@
                                                 </label>
 
                                                 <input type="text" name="email_from_email" id="email_from_email" class="form-control" placeholder="nao-responder@kwrite.com.br">
+
+                                                <?php if (array_key_exists("email_from_email", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["email_from_email"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
 
                                             <div class="mb-3">
@@ -297,6 +373,14 @@
                                                 </label>
 
                                                 <input type="text" name="email_from_name" id="email_from_name" class="form-control" placeholder="Kwrite">
+
+                                                <?php if (array_key_exists("email_from_name", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["email_from_name"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
 
                                             <div class="mb-3">
@@ -305,6 +389,14 @@
                                                 </label>
 
                                                 <input type="text" name="email_protocol" id="email_protocol" class="form-control" value="smtp" disabled>
+
+                                                <?php if (array_key_exists("email_protocol", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["email_protocol"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
 
                                             <div class="mb-3">
@@ -313,6 +405,14 @@
                                                 </label>
 
                                                 <input type="text" name="email_host" id="email_host" class="form-control">
+
+                                                <?php if (array_key_exists("email_host", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["email_host"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
 
                                             <div class="mb-3">
@@ -321,6 +421,14 @@
                                                 </label>
 
                                                 <input type="text" name="email_user" id="email_user" class="form-control">
+
+                                                <?php if (array_key_exists("email_user", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["email_user"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
 
                                             <div class="mb-3">
@@ -329,6 +437,14 @@
                                                 </label>
 
                                                 <input type="text" name="email_password" id="email_password" class="form-control">
+
+                                                <?php if (array_key_exists("email_password", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["email_password"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
 
                                             <div class="mb-3">
@@ -337,6 +453,14 @@
                                                 </label>
 
                                                 <input type="text" name="email_port" id="email_port" class="form-control">
+
+                                                <?php if (array_key_exists("email_port", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["email_port"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
 
                                             <div class="mb-3">
@@ -345,6 +469,14 @@
                                                 </label>
 
                                                 <input type="text" name="email_crypto" id="email_crypto" class="form-control" value="tls">
+
+                                                <?php if (array_key_exists("email_crypto", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["email_crypto"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
 
@@ -355,6 +487,14 @@
                                                 </label>
 
                                                 <textarea name="token_melhorenvio" id="token_melhorenvio" class="form-control"></textarea>
+
+                                                <?php if (array_key_exists("token_melhorenvio", $errors)): ?>
+                                                    <div class="invalid-feedback" style="display: block;">
+                                                        <?php foreach ($errors["token_melhorenvio"] as $value): ?>
+                                                            <?= $value; ?>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
                                             </div>
                                         </div>
                                     </div>
