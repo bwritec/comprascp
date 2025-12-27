@@ -54,6 +54,55 @@
     }
 
     /**
+     * Alterar um valor de uma chave .env
+     * 
+     * Exemplo:
+     *     setEnvValue("app.name", "kwrite");
+     *     setEnvValue("app.rate", "25");
+     */
+    public function setEnvValue($key, $value)
+    {
+        $path = dirname(__DIR__) . DIRECTORY_SEPARATOR . ".env";
+
+        if (!file_exists($path))
+        {
+            return false;
+        }
+
+        $value = trim($value);
+
+        $env = file_get_contents($path);
+
+        /**
+         * Verifica se já existe.
+         */
+        if (preg_match("/^{$key}=.*/m", $env))
+        {
+            /**
+             * Substitui a linha completa.
+             */
+            $env = preg_replace(
+                "/^{$key}=.*/m",
+                "{$key}=\"{$value}\"",
+                $env
+            );
+        } else
+        {
+            /**
+             * Adiciona ao final.
+             */
+            $env .= "\n{$key}=\"{$value}\"";
+        }
+
+        /**
+         * Salva de volta
+         */
+        file_put_contents($path, $env);
+
+        return true;
+    }
+
+    /**
      * Variável com erros de formulário.
      */
     $errors = array();
@@ -264,37 +313,62 @@
                     /**
                      * Vamos salvar a env.
                      */
-                }
 
-                /**
-                 * App
-                 *     app_name
-                 *     app_url
-                 *     app_rate
-                 *
-                 * Database
-                 *     database_hostname
-                 *     database_port
-                 *     database_name
-                 *     database_username
-                 *     database_password
-                 *
-                 * Email
-                 *     email_from_email
-                 *     email_from_name
-                 *     email_protocol
-                 *     email_host
-                 *     email_user
-                 *     email_password
-                 *     email_port
-                 *     email_crypto
-                 *
-                 * Token
-                 *     token_melhorenvio
-                 * 
-                 * Others
-                 *     environment
-                 */
+                    /**
+                     * Primeiramente vamos cópiar o arquivo .env.sample
+                     * para .env
+                     */
+                    file_put_contents(
+                        dirname(__DIR__) . DIRECTORY_SEPARATOR . ".env",
+                        file_get_contents(
+                            dirname(__DIR__) . DIRECTORY_SEPARATOR . ".env.sample"
+                        )
+                    );
+
+                    /**
+                     * App.
+                     */
+                    setEnvValue("app.name", $_POST["app_name"]);
+                    setEnvValue("app.baseURL", $_POST["app_url"]);
+                    setEnvValue("app.rate", $_POST["app_rate"]);
+
+                    /**
+                     * Database.
+                     */
+                    setEnvValue("database.default.hostname", $_POST["database_hostname"]);
+                    setEnvValue("database.default.port", $_POST["database_port"]);
+                    setEnvValue("database.default.database", $_POST["database_name"]);
+                    setEnvValue("database.default.username", $_POST["database_username"]);
+                    setEnvValue("database.default.password", $_POST["database_password"]);
+
+                    /**
+                     * Email.
+                     */
+                    setEnvValue("email.fromEmail", $_POST["email_from_email"]);
+                    setEnvValue("email.fromName", $_POST["email_from_name"]);
+                    setEnvValue("email.protocol", $_POST["email_protocol"]);
+                    setEnvValue("email.SMTPHost", $_POST["email_host"]);
+                    setEnvValue("email.SMTPUser", $_POST["email_user"]);
+                    setEnvValue("email.SMTPPass", $_POST["email_password"]);
+                    setEnvValue("email.SMTPPort", $_POST["email_port"]);
+                    setEnvValue("email.SMTPCrypto", $_POST["email_crypto"]);
+
+                    /**
+                     * Token.
+                     */
+                    setEnvValue("melhorenvio.token", $_POST["token_melhorenvio"]);
+
+                    /**
+                     * Others.
+                     */
+                    setEnvValue("CI_ENVIRONMENT", $_POST["environment"]);
+
+                    /**
+                     * Vamos redirecionar a página.
+                     */
+                    header('Location: ' . str_replace("//", "/", $_POST["app_url"] . "/index.php"));
+                    exit;
+                }
             }
         }
     }
