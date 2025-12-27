@@ -76,26 +76,185 @@
                 /**
                  * Validação.
                  */
-                if (is_empty("app_name"))          { if (!array_key_exists("app_name", $errors))          { $errors["app_name"] = array();          } array_push($errors["app_name"], "Você deve preencher esse campo."); }
-                if (is_empty("app_url"))           { if (!array_key_exists("app_url", $errors))           { $errors["app_url"] = array();           } array_push($errors["app_url"], "Você deve preencher esse campo."); }
-                if (is_empty("app_rate"))          { if (!array_key_exists("app_rate", $errors))          { $errors["app_rate"] = array();          } array_push($errors["app_rate"], "Você deve preencher esse campo."); }
+                if (is_empty("app_name"))
+                {
+                    if (!array_key_exists("app_name", $errors))
+                    {
+                        $errors["app_name"] = array();
+                    }
 
-                if (is_empty("database_hostname")) { if (!array_key_exists("database_hostname", $errors)) { $errors["database_hostname"] = array(); } array_push($errors["database_hostname"], "Você deve preencher esse campo."); }
-                if (is_empty("database_port"))     { if (!array_key_exists("database_port",     $errors)) { $errors["database_port"] = array();     } array_push($errors["database_port"], "Você deve preencher esse campo."); }
-                if (is_empty("database_name"))     { if (!array_key_exists("database_name",     $errors)) { $errors["database_name"] = array();     } array_push($errors["database_name"], "Você deve preencher esse campo."); }
-                if (is_empty("database_username")) { if (!array_key_exists("database_username", $errors)) { $errors["database_username"] = array(); } array_push($errors["database_username"], "Você deve preencher esse campo."); }
-                if (is_empty("database_password")) { if (!array_key_exists("database_password", $errors)) { $errors["database_password"] = array(); } array_push($errors["database_password"], "Você deve preencher esse campo."); }
+                    array_push($errors["app_name"], "Você deve preencher esse campo.");
+                }
 
-                if (is_empty("email_from_email"))  { if (!array_key_exists("email_from_email", $errors))  { $errors["email_from_email"] = array();  } array_push($errors["email_from_email"], "Você deve preencher esse campo."); }
-                if (is_empty("email_from_name"))   { if (!array_key_exists("email_from_name", $errors))   { $errors["email_from_name"] = array();   } array_push($errors["email_from_name"], "Você deve preencher esse campo."); }
-                if (is_empty("email_protocol"))    { if (!array_key_exists("email_protocol", $errors))    { $errors["email_protocol"] = array();    } array_push($errors["email_protocol"], "Você deve preencher esse campo."); }
-                if (is_empty("email_host"))        { if (!array_key_exists("email_host", $errors))        { $errors["email_host"] = array();        } array_push($errors["email_host"], "Você deve preencher esse campo."); }
-                if (is_empty("email_user"))        { if (!array_key_exists("email_user", $errors))        { $errors["email_user"] = array();        } array_push($errors["email_user"], "Você deve preencher esse campo."); }
-                if (is_empty("email_password"))    { if (!array_key_exists("email_password", $errors))    { $errors["email_password"] = array();    } array_push($errors["email_password"], "Você deve preencher esse campo."); }
-                if (is_empty("email_port"))        { if (!array_key_exists("email_port", $errors))        { $errors["email_port"] = array();        } array_push($errors["email_port"], "Você deve preencher esse campo."); }
-                if (is_empty("email_crypto"))      { if (!array_key_exists("email_crypto", $errors))      { $errors["email_crypto"] = array();      } array_push($errors["email_crypto"], "Você deve preencher esse campo."); }
+                if (is_empty("app_url"))
+                {
+                    if (!array_key_exists("app_url", $errors))
+                    {
+                        $errors["app_url"] = array();
+                    }
 
-                if (is_empty("token_melhorenvio")) { if (!array_key_exists("token_melhorenvio", $errors)) { $errors["token_melhorenvio"] = array(); } array_push($errors["token_melhorenvio"], "Você deve preencher esse campo."); }
+                    array_push($errors["app_url"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("app_rate"))
+                {
+                    if (!array_key_exists("app_rate", $errors))
+                    {
+                        $errors["app_rate"] = array();
+                    }
+
+                    array_push($errors["app_rate"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("database_hostname"))
+                {
+                    if (!array_key_exists("database_hostname", $errors))
+                    {
+                        $errors["database_hostname"] = array();
+                    }
+
+                    array_push($errors["database_hostname"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("database_port"))
+                {
+                    if (!array_key_exists("database_port", $errors))
+                    {
+                        $errors["database_port"] = array();
+                    }
+
+                    array_push($errors["database_port"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("database_name"))
+                {
+                    if (!array_key_exists("database_name", $errors))
+                    {
+                        $errors["database_name"] = array();
+                    }
+
+                    array_push($errors["database_name"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("database_username"))
+                {
+                    if (!array_key_exists("database_username", $errors))
+                    {
+                        $errors["database_username"] = array();
+                    }
+
+                    array_push($errors["database_username"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("database_password"))
+                {
+                    if (!array_key_exists("database_password", $errors))
+                    {
+                        $errors["database_password"] = array();
+                    }
+
+                    array_push($errors["database_password"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("email_from_email"))
+                {
+                    if (!array_key_exists("email_from_email", $errors))
+                    {
+                        $errors["email_from_email"] = array();
+                    }
+
+                    array_push($errors["email_from_email"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("email_from_name"))
+                {
+                    if (!array_key_exists("email_from_name", $errors))
+                    {
+                        $errors["email_from_name"] = array();
+                    }
+
+                    array_push($errors["email_from_name"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("email_protocol"))
+                {
+                    if (!array_key_exists("email_protocol", $errors))
+                    {
+                        $errors["email_protocol"] = array();
+                    }
+
+                    array_push($errors["email_protocol"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("email_host"))
+                {
+                    if (!array_key_exists("email_host", $errors))
+                    {
+                        $errors["email_host"] = array();
+                    }
+
+                    array_push($errors["email_host"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("email_user"))
+                {
+                    if (!array_key_exists("email_user", $errors))
+                    {
+                        $errors["email_user"] = array();
+                    }
+
+                    array_push($errors["email_user"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("email_password"))
+                {
+                    if (!array_key_exists("email_password", $errors))
+                    {
+                        $errors["email_password"] = array();
+                    }
+
+                    array_push($errors["email_password"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("email_port"))
+                {
+                    if (!array_key_exists("email_port", $errors))
+                    {
+                        $errors["email_port"] = array();
+                    }
+
+                    array_push($errors["email_port"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("email_crypto"))
+                {
+                    if (!array_key_exists("email_crypto", $errors))
+                    {
+                        $errors["email_crypto"] = array();
+                    }
+
+                    array_push($errors["email_crypto"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("token_melhorenvio"))
+                {
+                    if (!array_key_exists("token_melhorenvio", $errors))
+                    {
+                        $errors["token_melhorenvio"] = array();
+                    }
+
+                    array_push($errors["token_melhorenvio"], "Você deve preencher esse campo.");
+                }
+
+                if (is_empty("environment"))
+                {
+                    if (!array_key_exists("environment", $errors))
+                    {
+                        $errors["environment"] = array();
+                    }
+
+                    array_push($errors["environment"], "Você deve preencher esse campo.");
+                }
 
                 /**
                  * Questão: Existe errors no formulário ?
@@ -132,6 +291,9 @@
                  *
                  * Token
                  *     token_melhorenvio
+                 * 
+                 * Others
+                 *     environment
                  */
             }
         }
@@ -427,6 +589,12 @@
                                                     Token
                                                 </button>
                                             </li>
+
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="others-tab" data-bs-toggle="tab" data-bs-target="#others" type="button" role="tab">
+                                                    Outros
+                                                </button>
+                                            </li>
                                         </ul>
 
                                         <div class="tab-content mt-3" id="myTabContent">
@@ -709,6 +877,39 @@
                                                     <?php if (array_key_exists("token_melhorenvio", $errors)): ?>
                                                         <div class="invalid-feedback" style="display: block;">
                                                             <?php foreach ($errors["token_melhorenvio"] as $value): ?>
+                                                                <?= $value; ?>
+                                                            <?php endforeach; ?>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane fade" id="others" role="tabpanel">
+                                                <div class="mb-3">
+
+                                                    <label class="form-label">
+                                                        Ambiente
+                                                    </label>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="environment" id="production" value="production" checked>
+
+                                                        <label class="form-check-label" for="production">
+                                                            Produção
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="environment" id="development" value="development">
+
+                                                        <label class="form-check-label" for="development">
+                                                            Desenvolvimento
+                                                        </label>
+                                                    </div>
+
+                                                    <?php if (array_key_exists("environment", $errors)): ?>
+                                                        <div class="invalid-feedback" style="display: block;">
+                                                            <?php foreach ($errors["environment"] as $value): ?>
                                                                 <?= $value; ?>
                                                             <?php endforeach; ?>
                                                         </div>
