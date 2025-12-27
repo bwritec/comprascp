@@ -142,6 +142,21 @@
      */
     $permissions = array(
         /**
+         * /
+         */
+        dirname(__DIR__) => array(
+            /**
+             * Sem permissão de leitura.
+             */
+            "read" => false,
+
+            /**
+             * Sem permissão de escrita.
+             */
+            "write" => false
+        ),
+
+        /**
          * Writable
          */
         "writable" => array(
@@ -252,14 +267,28 @@
      */
     foreach ($permissions as $folder => $permission)
     {
-        if (is_readable(dirname(__DIR__) . DIRECTORY_SEPARATOR . $folder))
+        if ($folder == dirname(__DIR__))
         {
-            $permissions[$folder]["read"] = true;
-        }
+            if (is_readable($folder))
+            {
+                $permissions[$folder]["read"] = true;
+            }
 
-        if (is_writable(dirname(__DIR__) . DIRECTORY_SEPARATOR . $folder))
+            if (is_writable($folder))
+            {
+                $permissions[$folder]["write"] = true;
+            }
+        } else
         {
-            $permissions[$folder]["write"] = true;
+            if (is_readable(dirname(__DIR__) . DIRECTORY_SEPARATOR . $folder))
+            {
+                $permissions[$folder]["read"] = true;
+            }
+
+            if (is_writable(dirname(__DIR__) . DIRECTORY_SEPARATOR . $folder))
+            {
+                $permissions[$folder]["write"] = true;
+            }
         }
     }
 
