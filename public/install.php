@@ -74,6 +74,14 @@
         $env = file_get_contents($path);
 
         /**
+         * Filtros.
+         */
+        $env = str_replace("\t", " ", $env);
+        $env = str_replace("  ", " ", $env);
+        $env = str_replace(" =", "=", $env);
+        $env = str_replace("= ", "=", $env);
+
+        /**
          * Verifica se já existe.
          */
         if (preg_match("/^{$key}=.*/m", $env))
@@ -97,7 +105,16 @@
         /**
          * Salva de volta
          */
-        file_put_contents($path, $env);
+        // file_put_contents($path, $env);
+
+        $f = fopen($path, 'w');
+        if ($f === false)
+        {
+            die('Erro ao abrir o arquivo');
+        }
+
+        fwrite($f, $env);
+        fclose($f);
 
         return true;
     }
@@ -353,6 +370,11 @@
                     setEnvValue("email.SMTPPort", $_POST["email_port"]);
                     setEnvValue("email.SMTPCrypto", $_POST["email_crypto"]);
 
+                    if (strlen(trim($_POST["email_protocol"])) == 0)
+                    {
+                        setEnvValue("email.protocol", "smtp");
+                    }
+
                     /**
                      * Token.
                      */
@@ -366,7 +388,7 @@
                     /**
                      * Vamos redirecionar a página.
                      */
-                    header('Location: ' . str_replace("//", "/", $_POST["app_url"] . "/index.php"));
+                    header('Location: /index.php');
                     exit;
                 }
             }
