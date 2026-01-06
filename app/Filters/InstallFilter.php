@@ -14,11 +14,12 @@
             $path = service('request')->getPath();
 
             /**
-             * Fazer Migrations
+             * Fazer Migrations e seeds
              */
             if ($path != "install/database/migrate")
             {
-                if (env('installer.database.migration') == "0")
+                if (env('installer.database.migration') == "0" ||
+                    env('installer.database.seeds') == "0")
                 {
                     return redirect()->to('/install/database/migrate');
                 }
