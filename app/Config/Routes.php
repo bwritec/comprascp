@@ -17,6 +17,13 @@
     $routes->get('/product/(:num)', 'ProductController::show/$1');
 
     /**
+     * /install
+     * /install/database/migrate
+     */
+    $routes->get("/install/database/migrate", "InstallController::migrate");
+    $routes->post("/install/database/migrate", "InstallController::migrate_install");
+
+    /**
      * /frete/calcular
      */
     $routes->get('/frete/calcular', 'FreteController::calcular');

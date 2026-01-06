@@ -43,6 +43,11 @@
              * Filtro de autenticação
              */
             'auth'    => \App\Filters\AuthFilter::class,
+
+            /**
+             * Filtro do instalador
+             */
+            'install' => \App\Filters\InstallFilter::class,
         ];
 
         /**
@@ -64,6 +69,7 @@
             'before' => [
                 'forcehttps', // Forçar solicitações seguras globais
                 'pagecache',  // Cache de página da web
+                'install',    // Instalador do sistema
             ],
 
             'after' => [
