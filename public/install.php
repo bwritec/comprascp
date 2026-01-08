@@ -591,6 +591,7 @@
       - Estilos.
      -->
     <link rel="stylesheet" type="text/css" href="dist/css/bootstrap-5.3.7.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/fontawesome-7.0.0.css">
 
     <!--
       - Scripts.
@@ -637,9 +638,17 @@
                                 <tbody>
                                     <?php foreach ($permissions as $folder => $permission): ?>
                                         <tr>
-                                            <th><?= $folder ?></th>
-                                            <td><?= $permission["read"] == 1 ? "Sim" : "Não"; ?></td>
-                                            <td><?= $permission["write"] == 1 ? "Sim" : "Não"; ?></td>
+                                            <th>
+                                                <?= $folder ?>
+                                            </th>
+
+                                            <td>
+                                                <?= $permission["read"] == 1 ? '<span class="badge rounded-pill text-bg-success"><i class="fa-solid fa-check"></i></span>' : '<span class="badge rounded-pill text-bg-danger"><i class="fa-solid fa-xmark"></i></span>'; ?>
+                                            </td>
+
+                                            <td>
+                                                <?= $permission["write"] == 1 ? '<span class="badge rounded-pill text-bg-success"><i class="fa-solid fa-check"></i></span>' : '<span class="badge rounded-pill text-bg-danger"><i class="fa-solid fa-xmark"></i></span>'; ?>
+                                            </td>
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>
